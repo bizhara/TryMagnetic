@@ -25,24 +25,26 @@ class ViewController: UIViewController {
     var magnetic: Magnetic {
         return magneticView.magnetic
     }
+
+    private let initialItems = Int(12)
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        for _ in 0..<12 {
+        for _ in 0 ..< self.initialItems {
             add(nil)
         }
     }
-    
+
     @IBAction func add(_ sender: UIControl?) {
-        let name = UIImage.names.randomItem()
-        let color = UIColor.colors.randomItem()
-        let node = Node(text: name.capitalized, image: UIImage(named: name), color: color, radius: 40)
+        let radius = CGFloat.radiuses.randomItem()
+        let name = "\(radius)"
+        let color = UIColor.white
+        let node = Node(text: name, image: nil, color: color, radius: radius)
+        node.fillColor = UIColor.white
+        node.strokeColor = UIColor.black
+        node.label.fontColor = UIColor.black
         magnetic.addChild(node)
-        
-        // Image Node: image displayed by default
-        // let node = ImageNode(text: name.capitalized, image: UIImage(named: name), color: color, radius: 40)
-        // magnetic.addChild(node)
     }
     
     @IBAction func reset(_ sender: UIControl?) {
