@@ -32,18 +32,21 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         for _ in 0 ..< self.initialItems {
-            add(nil)
+            let item = self.makeItem(withRadius: CGFloat.radiuses.randomItem())
+            self.magnetic.addChild(item)
         }
     }
 
+    private func makeItem(withRadius: CGFloat) -> Node {
+        let item = Node(text: "\(withRadius)", image: nil, color: UIColor.white, radius: withRadius)
+        item.fillColor = UIColor.white
+        item.strokeColor = UIColor.black
+        item.label.fontColor = UIColor.black
+        return item
+    }
+
     @IBAction func add(_ sender: UIControl?) {
-        let radius = CGFloat.radiuses.randomItem()
-        let name = "\(radius)"
-        let color = UIColor.white
-        let node = Node(text: name, image: nil, color: color, radius: radius)
-        node.fillColor = UIColor.white
-        node.strokeColor = UIColor.black
-        node.label.fontColor = UIColor.black
+        let node = self.makeItem(withRadius: CGFloat.radiuses.randomItem())
         magnetic.addChild(node)
     }
     
