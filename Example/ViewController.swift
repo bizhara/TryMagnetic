@@ -37,6 +37,12 @@ class ViewController: UIViewController {
     }
 
     @IBAction func load(_ sender: UIControl?) {
+        let lastFrame = self.magneticView.frame
+        self.magneticView.removeFromSuperview()
+        let magneticView = MagneticView(frame: lastFrame)
+        self.view.addSubview(magneticView)
+        self.magneticView = magneticView
+
         for _ in 0 ..< self.initialItems {
             let item = self.makeItem(withRadius: CGFloat.radiuses.randomItem())
             self.magnetic.addChild(item)
