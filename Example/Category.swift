@@ -1,5 +1,5 @@
 //
-//  MainCategory.swift
+//  Category.swift
 //  Example
 //
 //  Created by khara on 10/19/17.
@@ -9,7 +9,7 @@
 import UIKit
 import Magnetic
 
-protocol CategoryProtocol {
+protocol CategoryColorProtocol {
     var normalFillColor: UIColor { get }
     var normalStrokeColor: UIColor { get }
     var normalFontColor: UIColor { get }
@@ -18,18 +18,24 @@ protocol CategoryProtocol {
     var selectedFontColor: UIColor { get }
 }
 
-protocol MainCategoryProtocol: CategoryProtocol {
-    var subCategoryRadiuses: [CGFloat] { get }
-}
-
-extension MainCategoryProtocol where Self: MainCategory {
+extension CategoryColorProtocol {
     var normalFillColor: UIColor { return UIColor.white }
     var normalStrokeColor: UIColor { return UIColor.black }
     var normalFontColor: UIColor { return UIColor.black }
     var selectedFillColor: UIColor { return UIColor.gray }
     var selectedStrokeColor: UIColor { return UIColor.black }
     var selectedFontColor: UIColor { return UIColor.white }
+}
+
+protocol MainCategoryProtocol: CategoryColorProtocol {
+    var subCategoryRadiuses: [CGFloat] { get }
+}
+
+extension MainCategoryProtocol {
     var subCategoryRadiuses: [CGFloat] { return [40, 50, 60, 70] }
+}
+
+protocol SubCategoryProtocol: CategoryColorProtocol {
 }
 
 class MainCategory: Node, MainCategoryProtocol {
