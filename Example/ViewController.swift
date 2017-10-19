@@ -28,12 +28,8 @@ class ViewController: UIViewController {
 
     private let initialItems = Int(12)
 
-    private func makeItem(withRadius: CGFloat) -> Node {
-        let item = Node(text: "\(withRadius)", image: nil, color: UIColor.white, radius: withRadius)
-        item.fillColor = UIColor.white
-        item.strokeColor = UIColor.black
-        item.label.fontColor = UIColor.black
-        return item
+    private func makeOne(withRadius: CGFloat) -> MainCategory {
+        return MainCategory(text: "\(withRadius)", radius: withRadius)
     }
 
     @IBAction func load(_ sender: UIControl?) {
@@ -44,14 +40,14 @@ class ViewController: UIViewController {
         self.magneticView = magneticView
 
         for _ in 0 ..< self.initialItems {
-            let item = self.makeItem(withRadius: CGFloat.radiuses.randomItem())
-            self.magnetic.addChild(item)
+            let one = self.makeOne(withRadius: CGFloat.radiuses.randomItem())
+            self.magnetic.addChild(one)
         }
     }
 
     @IBAction func add(_ sender: UIControl?) {
-        let node = self.makeItem(withRadius: CGFloat.radiuses.randomItem())
-        magnetic.addChild(node)
+        let one = self.makeOne(withRadius: CGFloat.radiuses.randomItem())
+        magnetic.addChild(one)
     }
     
     @IBAction func reset(_ sender: UIControl?) {
