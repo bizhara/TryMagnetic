@@ -27,15 +27,6 @@ class ViewController: UIViewController {
     }
 
     private let initialItems = Int(12)
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        for _ in 0 ..< self.initialItems {
-            let item = self.makeItem(withRadius: CGFloat.radiuses.randomItem())
-            self.magnetic.addChild(item)
-        }
-    }
 
     private func makeItem(withRadius: CGFloat) -> Node {
         let item = Node(text: "\(withRadius)", image: nil, color: UIColor.white, radius: withRadius)
@@ -43,6 +34,13 @@ class ViewController: UIViewController {
         item.strokeColor = UIColor.black
         item.label.fontColor = UIColor.black
         return item
+    }
+
+    @IBAction func load(_ sender: UIControl?) {
+        for _ in 0 ..< self.initialItems {
+            let item = self.makeItem(withRadius: CGFloat.radiuses.randomItem())
+            self.magnetic.addChild(item)
+        }
     }
 
     @IBAction func add(_ sender: UIControl?) {
