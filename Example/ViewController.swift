@@ -91,10 +91,12 @@ extension ViewController: MagneticDelegate {
     
     func magnetic(_ magnetic: Magnetic, didSelect node: Node) {
         print("didSelect -> \(node)")
+        node.isSelected = true
     }
     
     func magnetic(_ magnetic: Magnetic, didDeselect node: Node) {
         print("didDeselect -> \(node)")
+        node.isSelected = false
     }
     
 }
