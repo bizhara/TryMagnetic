@@ -10,8 +10,9 @@ import Magnetic
 
 class SubCategoryView: UIView {
     private var magneticView: MagneticView!
+    private var whenClosed: (() -> Void)?
 
-    static func make(withFrame: CGRect, mainCategory: MainCategory) -> SubCategoryView {
+    static func make(withFrame: CGRect, mainCategory: MainCategory, whenClosed: (() -> Void)?) -> SubCategoryView {
         let subCategoryView = SubCategoryView(frame: withFrame)
         subCategoryView.backgroundColor = UIColor.clear
 
@@ -19,6 +20,7 @@ class SubCategoryView: UIView {
         subCategoryView.addSubview(subCategoryView.magneticView)
 
         subCategoryView.setup(withMainCategory: mainCategory)
+        subCategoryView.whenClosed = whenClosed
 
         return subCategoryView
     }
