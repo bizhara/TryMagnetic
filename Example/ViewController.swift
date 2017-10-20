@@ -28,12 +28,6 @@ class ViewController: UIViewController {
 
     private let initialItems = Int(12)
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.magnetic.magneticField.position = CGPoint(x: 40, y: 280)
-    }
-
     private func makeOne(withRadius: CGFloat) -> MainCategory {
         return MainCategory(text: "\(withRadius)", radius: withRadius)
     }
