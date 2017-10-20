@@ -10,6 +10,7 @@ import Magnetic
 
 protocol SubCategoryViewProtocol {
     func setup(withMainCategory: MainCategory)
+    func addSubCategories(withMainCategory: MainCategory)
 }
 
 extension SubCategoryViewProtocol where Self: MagneticView {
@@ -26,6 +27,18 @@ extension SubCategoryViewProtocol where Self: MagneticView {
         self.magnetic.magneticField.position = center
         self.magnetic.addChild(selectedCategory)
         selectedCategory.position = center
+
+        self.addSubCategories(withMainCategory: selectedCategory)
+    }
+
+    private var numberOfSubCategories: Int { return 6 }
+
+    func addSubCategories(withMainCategory: MainCategory) {
+        for _ in 0 ..< self.numberOfSubCategories {
+            let radius = withMainCategory.subCategoryRadiuses.randomItem()
+            let subCategory = SubCategory(text: "\(radius)", radius: radius)
+            self.magnetic.addChild(subCategory)
+        }
     }
 }
 
