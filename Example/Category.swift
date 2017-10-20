@@ -24,7 +24,7 @@ extension CategoryColorProtocol where Self: Node {
     var normalFillColor: UIColor { return UIColor.white }
     var normalStrokeColor: UIColor { return UIColor.black }
     var normalFontColor: UIColor { return UIColor.black }
-    var selectedFillColor: UIColor { return UIColor.gray }
+    var selectedFillColor: UIColor { return UIColor(red: 0, green: 73/255, blue: 89/255, alpha: 1.0) }
     var selectedStrokeColor: UIColor { return UIColor.black }
     var selectedFontColor: UIColor { return UIColor.white }
 
