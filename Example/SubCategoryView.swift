@@ -11,6 +11,7 @@ import Magnetic
 class SubCategoryView: UIView {
     private var magneticView: MagneticView!
     private var whenClosed: (() -> Void)?
+    private var selected: Node?
 
     static func make(withFrame: CGRect, mainCategory: MainCategory, whenClosed: (() -> Void)?) -> SubCategoryView {
         let subCategoryView = SubCategoryView(frame: withFrame)
@@ -26,7 +27,7 @@ class SubCategoryView: UIView {
 
     private func setup(withMainCategory: MainCategory) {
         self.backgroundColor = UIColor.clear
-
+        self.magneticView.magnetic.magneticDelegate = self
         self.magneticView.magnetic.backgroundColor = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 0.74)
         self.magneticView.backgroundColor = UIColor.clear
 
@@ -51,5 +52,17 @@ class SubCategoryView: UIView {
             let subCategory = SubCategory(text: "\(radius)", radius: radius)
             self.magneticView.magnetic.addChild(subCategory)
         }
+    }
+}
+
+extension SubCategoryView: MagneticDelegate {
+    func magnetic(_ magnetic: Magnetic, didSelect node: Node) {
+        self.selected?.isSelected = false
+        self.selected = node
+        self.selected?.isSelected = true
+    }
+
+    func magnetic(_ magnetic: Magnetic, didDeselect node: Node) {
+
     }
 }
