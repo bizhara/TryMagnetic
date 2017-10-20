@@ -28,6 +28,12 @@ class ViewController: UIViewController {
 
     private let initialItems = Int(12)
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.magnetic.magneticField.position = CGPoint(x: 40, y: 280)
+    }
+
     private func makeOne(withRadius: CGFloat) -> MainCategory {
         return MainCategory(text: "\(withRadius)", radius: withRadius)
     }
@@ -91,12 +97,20 @@ extension ViewController: MagneticDelegate {
     
     func magnetic(_ magnetic: Magnetic, didSelect node: Node) {
         print("didSelect -> \(node)")
-        node.isSelected = true
+
+        if let mainCategory = node as? MainCategory {
+            self.magneticView.isUserInteractionEnabled = false
+            mainCategory.physicsBody?.isDynamic = false
+            mainCategory.isSelected = false
+
+            let subCategoryView = MagneticView(frame: self.magneticView.bounds)
+            subCategoryView.setup(withMainCategory: mainCategory)
+            self.magneticView.addSubview(subCategoryView)
+        }
     }
     
     func magnetic(_ magnetic: Magnetic, didDeselect node: Node) {
         print("didDeselect -> \(node)")
-        node.isSelected = false
     }
     
 }
