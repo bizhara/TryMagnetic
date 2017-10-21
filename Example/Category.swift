@@ -81,6 +81,11 @@ class Category: Node, CategoryColorProtocol {
             self.changeColors(toSelected: self.isSelected)
         }
     }
+
+    var isMovable: Bool {
+        get { return self.physicsBody?.isDynamic ?? false }
+        set { self.physicsBody?.isDynamic = newValue }
+    }
 }
 
 class MainCategory: Category, MainCategoryProtocol {

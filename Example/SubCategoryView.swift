@@ -34,7 +34,7 @@ class SubCategoryView: UIView {
         let radius = CGFloat(Int(withMainCategory.frame.width / 2) - 1) // Node.init 内で physicsBody を作る時に入力の radius に +2 しているのの補正
         let selectedCategory = MainCategory(text: withMainCategory.text, radius: radius)
         selectedCategory.isSelected = true
-        selectedCategory.physicsBody?.isDynamic = false
+        selectedCategory.isMovable = false
         let center = CGPoint(x: withMainCategory.frame.midX, y: withMainCategory.frame.midY)
 
         self.magneticView.magnetic.magneticField.position = center
