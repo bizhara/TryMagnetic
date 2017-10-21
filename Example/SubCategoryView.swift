@@ -51,10 +51,14 @@ extension SubCategoryView: MagneticDelegate {
     func magnetic(_ magnetic: Magnetic, didSelect node: Node) {
         self.selected?.isSelected = false
         self.selected = node
-        self.selected?.isSelected = true
+        // 選択された状態で呼び出されるので注意
+        // self.selected?.isSelected = true
     }
 
     func magnetic(_ magnetic: Magnetic, didDeselect node: Node) {
-
+        if node is MainCategory {
+            self.whenClosed?()
+            self.removeFromSuperview()
+        }
     }
 }
