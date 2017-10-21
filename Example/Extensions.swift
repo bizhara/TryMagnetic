@@ -72,3 +72,7 @@ extension CGPoint {
     }
     
 }
+
+extension CGFloat {
+    static let radiuses: [CGFloat] = [40, 50, 60, 70]
+}

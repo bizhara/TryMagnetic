@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		622BEF2F1F9A050700F11127 /* SubCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 622BEF2E1F9A050700F11127 /* SubCategoryView.swift */; };
+		62D679651F98A63700B5C7E6 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62D679641F98A63700B5C7E6 /* Category.swift */; };
 		71835A711EC44BC100782066 /* SKMultilineLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71835A701EC44BC100782066 /* SKMultilineLabelNode.swift */; };
 		8B103C641E88AFA200CC83E2 /* Magnetic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6914BB1E70F6A90007896C /* Magnetic.framework */; };
 		8B103C651E88AFA200CC83E2 /* Magnetic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8B6914BB1E70F6A90007896C /* Magnetic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -69,6 +71,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		622BEF2E1F9A050700F11127 /* SubCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoryView.swift; sourceTree = "<group>"; };
+		62D679641F98A63700B5C7E6 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		71835A701EC44BC100782066 /* SKMultilineLabelNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKMultilineLabelNode.swift; sourceTree = "<group>"; };
 		8B170CE21E8B2858005F45AB /* SFDisplay-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFDisplay-Black.otf"; sourceTree = "<group>"; };
 		8B170CE31E8B2858005F45AB /* SFDisplay-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SFDisplay-Bold.otf"; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 		8B6914CB1E70F6B50007896C /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				622BEF2E1F9A050700F11127 /* SubCategoryView.swift */,
+				62D679641F98A63700B5C7E6 /* Category.swift */,
 				8B6914CC1E70F6B50007896C /* AppDelegate.swift */,
 				8B6914CE1E70F6B50007896C /* ViewController.swift */,
 				8B6AA4711E873E1700909A36 /* Extensions.swift */,
@@ -262,7 +268,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = efremidze;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					8B6914BA1E70F6A90007896C = {
 						CreatedOnToolsVersion = 8.2;
@@ -353,6 +359,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62D679651F98A63700B5C7E6 /* Category.swift in Sources */,
+				622BEF2F1F9A050700F11127 /* SubCategoryView.swift in Sources */,
 				8B6914CF1E70F6B50007896C /* ViewController.swift in Sources */,
 				8B6AA4721E873E1700909A36 /* Extensions.swift in Sources */,
 				8B6914CD1E70F6B50007896C /* AppDelegate.swift in Sources */,

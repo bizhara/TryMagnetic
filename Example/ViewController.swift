@@ -25,24 +25,29 @@ class ViewController: UIViewController {
     var magnetic: Magnetic {
         return magneticView.magnetic
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        for _ in 0..<12 {
-            add(nil)
+
+    private let initialItems = Int(12)
+
+    private func makeOne(withRadius: CGFloat) -> MainCategory {
+        return MainCategory(text: "\(withRadius)", radius: withRadius)
+    }
+
+    @IBAction func load(_ sender: UIControl?) {
+        let lastFrame = self.magneticView.frame
+        self.magneticView.removeFromSuperview()
+        let magneticView = MagneticView(frame: lastFrame)
+        self.view.addSubview(magneticView)
+        self.magneticView = magneticView
+
+        for _ in 0 ..< self.initialItems {
+            let one = self.makeOne(withRadius: CGFloat.radiuses.randomItem())
+            self.magnetic.addChild(one)
         }
     }
-    
+
     @IBAction func add(_ sender: UIControl?) {
-        let name = UIImage.names.randomItem()
-        let color = UIColor.colors.randomItem()
-        let node = Node(text: name.capitalized, image: UIImage(named: name), color: color, radius: 40)
-        magnetic.addChild(node)
-        
-        // Image Node: image displayed by default
-        // let node = ImageNode(text: name.capitalized, image: UIImage(named: name), color: color, radius: 40)
-        // magnetic.addChild(node)
+        let one = self.makeOne(withRadius: CGFloat.radiuses.randomItem())
+        magnetic.addChild(one)
     }
     
     @IBAction func reset(_ sender: UIControl?) {
@@ -86,6 +91,18 @@ extension ViewController: MagneticDelegate {
     
     func magnetic(_ magnetic: Magnetic, didSelect node: Node) {
         print("didSelect -> \(node)")
+
+        if let mainCategory = node as? MainCategory {
+            self.magneticView.isUserInteractionEnabled = false
+            mainCategory.isMovable = false
+            mainCategory.isSelected = false
+
+            let subCategoryView = SubCategoryView.make(withFrame: self.magneticView.frame, mainCategory: mainCategory) { [weak self] () in
+                mainCategory.isMovable = true
+                self?.magneticView.isUserInteractionEnabled = true
+            }
+            self.view.addSubview(subCategoryView)
+        }
     }
     
     func magnetic(_ magnetic: Magnetic, didDeselect node: Node) {
