@@ -41,16 +41,8 @@ class SubCategoryView: UIView {
         self.magneticView.magnetic.addChild(selectedCategory)
         selectedCategory.position = center
 
-        self.addSubCategories(withMainCategory: withMainCategory)
-    }
-
-    private let numberOfSubCategories = Int(6)
-
-    func addSubCategories(withMainCategory: MainCategory) {
-        for _ in 0 ..< self.numberOfSubCategories {
-            let radius = withMainCategory.subCategoryRadiuses.randomItem()
-            let subCategory = SubCategory(text: "\(radius)", radius: radius)
-            self.magneticView.magnetic.addChild(subCategory)
+        withMainCategory.generateSubCategories { [weak self] (subCategory) in
+            self?.magneticView.magnetic.addChild(subCategory)
         }
     }
 }

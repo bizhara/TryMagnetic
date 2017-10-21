@@ -45,10 +45,20 @@ extension CategoryColorProtocol where Self: Node {
 
 protocol MainCategoryProtocol: CategoryColorProtocol {
     var subCategoryRadiuses: [CGFloat] { get }
+    var numberOfSubCategories: Int { get }
+    func generateSubCategories(notifySubCategory: (_ subCategory: SubCategory) -> Void)
 }
 
 extension MainCategoryProtocol {
     var subCategoryRadiuses: [CGFloat] { return [40, 50, 60, 70] }
+    var numberOfSubCategories: Int { return 6 }
+    func generateSubCategories(notifySubCategory: (_ subCategory: SubCategory) -> Void) {
+        for _ in 0 ..< self.numberOfSubCategories {
+            let radius = self.subCategoryRadiuses.randomItem()
+            let subCategory = SubCategory(text: "\(radius)", radius: radius)
+            notifySubCategory(subCategory)
+        }
+    }
 }
 
 protocol SubCategoryProtocol: CategoryColorProtocol {
