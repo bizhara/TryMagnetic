@@ -25,11 +25,14 @@ class SubCategoryView: UIView {
         return subCategoryView
     }
 
+    private let animationSpeed = CGFloat(4.0)
+
     private func setup(withMainCategory: MainCategory) {
         self.backgroundColor = UIColor.clear
         self.magneticView.backgroundColor = UIColor.clear
         self.magneticView.magnetic.backgroundColor = UIColor(red: 66/255, green: 66/255, blue: 66/255, alpha: 0.74)
         self.magneticView.magnetic.magneticDelegate = self
+        self.magneticView.magnetic.physicsWorld.speed = self.animationSpeed // これでアニメーション速度の調整ができるが、この中で起こる全てに影響してしまう
 
         let radius = CGFloat(Int(withMainCategory.frame.width / 2) - 1) // Node.init 内で physicsBody を作る時に入力の radius に +2 しているのの補正
         let selectedCategory = MainCategory(text: withMainCategory.text, radius: radius)
