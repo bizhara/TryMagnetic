@@ -97,9 +97,9 @@ extension ViewController: MagneticDelegate {
             mainCategory.physicsBody?.isDynamic = false
             mainCategory.isSelected = false
 
-            let subCategoryView = SubCategoryView.make(withFrame: self.magneticView.frame, mainCategory: mainCategory) {
+            let subCategoryView = SubCategoryView.make(withFrame: self.magneticView.frame, mainCategory: mainCategory) { [weak self] () in
                 mainCategory.physicsBody?.isDynamic = true
-                self.magneticView.isUserInteractionEnabled = true
+                self?.magneticView.isUserInteractionEnabled = true
             }
             self.view.addSubview(subCategoryView)
         }
