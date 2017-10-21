@@ -16,7 +16,7 @@ class SubCategoryView: UIView {
     static func make(withFrame: CGRect, mainCategory: MainCategory, whenClosed: (() -> Void)?) -> SubCategoryView {
         let subCategoryView = SubCategoryView(frame: withFrame)
 
-        subCategoryView.magneticView = MagneticView(frame: withFrame)
+        subCategoryView.magneticView = MagneticView(frame: subCategoryView.bounds)
         subCategoryView.addSubview(subCategoryView.magneticView)
 
         subCategoryView.setup(withMainCategory: mainCategory)
